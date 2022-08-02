@@ -42,9 +42,21 @@ class Post
         });
 
     }
-    public static function find($slug)
+    public static function findOrFail($slug)
     {
         return static::all()->firstWhere('slug', $slug);
+
+    }
+
+    public static function find($slug)
+    {
+        $post = static::find($slug);
+
+        if(! $post) {
+            throw new ModelNotFoundException();
+        }
+
+        return $post;
     }
 
 }
