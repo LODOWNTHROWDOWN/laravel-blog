@@ -28,4 +28,4 @@ Route::get('posts/{post}', function ($slug) {
     return view('post', [
         'post' => $post
     ]);
-});
+})->where('psot', '[A-z_\-]+');
