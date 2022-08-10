@@ -10,7 +10,7 @@ class Newsletter
     {
         $list ??= config('services.mailchimp.lists.subscribers');
 
-        return $mailchimp->lists->addListMember($list, [
+        return $this->client()->lists->addListMember($list, [
             'email_address' => $email,
             'status' => 'subscribed'
         ]);
